@@ -1,5 +1,6 @@
 # FATIMA_152Eu_autocal
-Automatic calibration for LaBr3 energy spectra based on 152Eu source measurements.
+Automatic calibration for LaBr3 energy spectra based on 152Eu source measurements
+written in python (python3).
 
 ## Usage:
 `./FATIMA_152EU_autocal.py <histogram file name> (<detnumber>)`
@@ -18,6 +19,9 @@ if given) and the calibration parameters which were determined in the fit.
 Additionally a window will open with a plot of the fitted peaks and them
 residual of the final calibration. This plot will also be saved as a .png
 file for reference.
+
+## Requires:
+In particular: matplotlib, numpy, scipy
 
 ## Working principle:
 The code works in several stages. A brief description (omitting many subtleties)
