@@ -15,9 +15,13 @@ column of the output file.
 ### Output:
 The output is a textfile containing the input file name (or detector number
 if given) and the calibration parameters which were determined in the fit.
+Additionally a window will open with a plot of the fitted peaks and them
+residual of the final calibration. This plot will also be saved as a .png
+file for reference.
 
 ## Working principle:
-The code works in several stages.
+The code works in several stages. A brief description (omitting many subtleties)
+is given below:
 
 #### Preparation:
 First the input histogram is prepared for analysis. It is checked if
@@ -33,12 +37,17 @@ There are parameters which cut peaks of small prominence. These are set
 to reasonable values, but have to be adjusted potentially for each case.
 Once the peak list is found another check is done. This tries to identify
 the peaks with known strong peaks from the 152Eu spectrum, like 121 keV,
-779 keV etc. If this fails, the programme will abort.
+779 keV etc. The programme uses approximate relative intensities to do this
+check. These can vary for different detector types and might have to be
+adjusted. Currently the values are optimised for use with the FATIMA core
+LaBr3 detectors.
+
+If the identification fails, the programme will abort.
 
 #### Fitting procedure:
-After the peaks are identified the programme will determine each peaks position
+After the peaks are identified the programme will determine each peak's position
 using a simple Gauss+BG fit. There are special procedures for peaks that are
-close together (411,444 adn 1089,1112). With the determined values it Will
+close together (411,444 and 1089,1112). With the determined values it will
 first attempt a calibration
 fit with a 3rd order polynomial. If this doesn't produce a good result it
 will do another fit with a 4th order polynomial.
